@@ -61,5 +61,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="evodialer" />
+    <orderEntry type="module" module-name="ect" />
   </component>
 </module>

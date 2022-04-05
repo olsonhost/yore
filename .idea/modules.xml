@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../ect/.idea/ect.iml" filepath="$PROJECT_DIR$/../ect/.idea/ect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../evodialer/.idea/evodialer.iml" filepath="$PROJECT_DIR$/../evodialer/.idea/evodialer.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/yore.iml" filepath="$PROJECT_DIR$/.idea/yore.iml" />
     </modules>
   </component>
