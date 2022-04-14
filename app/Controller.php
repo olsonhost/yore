@@ -66,9 +66,22 @@ class Controller extends Library {
             include $header_file; // Can return a value with return()
         $this->output .= ob_get_clean();
 
+        $navbar_file = __DIR__ . '/../web/themes/' . $this->data->theme . '/html/navbar.php';
+        ob_start();
+        //$return =
+        include $navbar_file; // Can return a value with return()
+        $this->output .= ob_get_clean();
+
         $this->output .= $this->cssFiles();
 
-        $this->output .= $this->html;
+        $this->output .= "
+        <main role=\"main\" class=\"container\">
+          <div class=\"starter-template\">
+            <h1>Bootstrap starter template</h1>
+            <p class=\"lead\">{$this->html}</p>
+          </div>
+        </main>
+        ";
 
         $this->output .= $this->jsFiles();
 
