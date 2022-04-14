@@ -11,7 +11,8 @@
         "php": "^7.4.0|^8.0",
         "ext-curl": "*",
         "ext-json": "*",
-        "olsonhost/ect": "dev-main"
+        "olsonhost/ect": "dev-main",
+        "olsonhost/phat": "dev-main"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

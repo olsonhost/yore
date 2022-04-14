@@ -2,33 +2,17 @@
 
 namespace App;
 
-class Controller {
-
-    public $params, $site, $page, $arg1, $arg2, $arg3;
+class Controller extends Library {
 
     public $data, $json;
 
     public $header, $footer, $html, $js, $css, $output;
 
+    public $assets; // array of css and js links to be included in output
+
     public function __construct() {
 
-        $this->params = explode('/',
-            strtolower(
-                trim(
-                    str_replace(
-                        [' ','-','.'],
-                        '_',
-                        trim($_SERVER['REQUEST_URI'], '/')
-                    )
-                )
-            )
-        );
-
-        $this->site = $this->params[0] ?? 'home';
-        $this->page = $this->params[1] ?? 'home';
-        $this->arg1 = $this->params[2] ?? false;
-        $this->arg2 = $this->params[3] ?? false;
-        $this->arg3 = $this->params[4] ?? false;
+        $this->init();
 
         //var_dump([$this->site,$this->page,$this->arg1,$this->arg2,$this->arg3]);
         // https://yoreweb.com/ho/ha/this/that/tother
@@ -42,7 +26,6 @@ class Controller {
 
         exit($this->output);
 
-
     }
 
     public function process() {
@@ -53,6 +36,8 @@ class Controller {
 
     public function assemble() {
 
+        // In the helper class or parent thing, make methods to doing this repetetive task
+
         $fi = __DIR__ . '/../web/themes/' . $this->data->theme . '/css/theme.css';  // Why not make this Php ?
 
         //exit($fi);
@@ -62,6 +47,9 @@ class Controller {
        // var_dump($this->css); exit;
 
         if ($this->css === false) {
+
+            // Make this a template or something
+
             exit("
                 <html>
                 <body>

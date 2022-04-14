@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "617e541b8090e4438be12e7629ed832a",
+    "content-hash": "34e24e690a2d9978335cfed9d59c07d2",
     "packages": [
         {
             "name": "olsonhost/ect",
@@ -43,6 +43,44 @@
                 "source": "https://github.com/olsonhost/ect/tree/main"
             },
             "time": "2021-06-19T22:02:43+00:00"
+        },
+        {
+            "name": "olsonhost/phat",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/olsonhost/phat.git",
+                "reference": "13e71e54354819371914893f8946867226e81de2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/olsonhost/phat/zipball/13e71e54354819371914893f8946867226e81de2",
+                "reference": "13e71e54354819371914893f8946867226e81de2",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Olsonhost\\Phat\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Erik Olson",
+                    "email": "erik@olson.host"
+                }
+            ],
+            "description": "Phat is a template engine for the Yore framework",
+            "support": {
+                "issues": "https://github.com/olsonhost/phat/issues",
+                "source": "https://github.com/olsonhost/phat/tree/main"
+            },
+            "time": "2022-04-14T14:43:37+00:00"
         }
     ],
     "packages-dev": [
@@ -3374,7 +3412,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "olsonhost/ect": 20
+        "olsonhost/ect": 20,
+        "olsonhost/phat": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
