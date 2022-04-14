@@ -3,5 +3,6 @@
   "page": "home",
   "title": "Welcome to Yore!",
   "theme": "default",
-  "desc": "This is the very first page for Yore"
+  "desc": "This is the very first page for Yore",
+  "body": "Home: This is the body of the page!"
 }

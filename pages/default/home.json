@@ -3,5 +3,6 @@
   "page": "",
   "title": "No Title",
   "theme": "default",
-  "desc": "This is a default page"
+  "desc": "This is a default page",
+  "body": "Default: This is the body of the page!"
 }

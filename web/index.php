@@ -10,10 +10,19 @@ use Olsonhost\Ect\Init;
 
 require '../vendor/autoload.php';
 
-#$C = new Controller;
+$C = new Controller;
 
-$ECT = new Init();
 
-$ECT->whtest();
+
+
+
+
+// This is how we would instantiate ECT (which instantiates Twilio)
+
+#$ECT = new Init();
+
+// This invokes the Twilio webhook which invokes $this((Twilio))->ect->test(); which outputs *** TEST!!! ***
+
+#$ECT->whtest();
 
 #exit('<img style="width:72px" src="/images/spronzer.png"><br/>Halo Welt');
