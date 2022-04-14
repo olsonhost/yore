@@ -34,11 +34,8 @@ class Library
         // Render the output using the Phat viewer
         $phat = new Phat;
 
-        echo $phat->view($output, $data);
+        return $phat->view($output, $data);
 
-        echo $output;
-
-        return true;
     }
 
     public function abort($code=500, $message='An error has occurred', $details = 'No details') {

@@ -7,13 +7,14 @@
 use App\Controller;
 use Olsonhost\Ect\Init;
 
-
 require '../vendor/autoload.php';
+
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 $C = new Controller;
 
-
-
+echo $C->page;
 
 
 

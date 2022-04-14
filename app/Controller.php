@@ -6,7 +6,7 @@ class Controller extends Library {
 
     public $data, $json;
 
-    public $header, $footer, $html, $js = [], $css = [], $output;
+    public $header, $footer, $html, $js = [], $css = [], $output, $page;
 
     public function __construct() {
 
@@ -22,7 +22,7 @@ class Controller extends Library {
 
         $ok = $this->assemble();
 
-        exit($this->output);
+        $this->page = $this->view($this->output, $this->data);
 
     }
 
@@ -34,58 +34,76 @@ class Controller extends Library {
 
     public function assemble() {
 
-        // In the helper class or parent thing, make methods to doing this repetetive task
+        $dir = __DIR__ . '/../web/themes/' . $this->data->theme . '/css/*.css';
 
-        $cssDir = __DIR__ . '/../web/themes/' . $this->data->theme . '/css/*.css';
-
-        foreach (glob($cssDir) as $filename) {
-            echo "$filename size " . filesize($filename) . "\n";
+        foreach (glob($dir) as $filename) {
+            $this->css[] = explode('/../web', $filename)[1];
         }
-
-        exit;
 
         if (empty($this->css)) {
 
-            $this->abort();
+            $this->abort(500, "Missing Stylesheet");
 
         }
-        // get any additional css files in here
-        // foreach blah blah make include files
 
-        $fi = __DIR__ . '/../web/themes/' . $this->data->theme . '/js/theme.js'; // Why not make this Php ?
+        $dir = __DIR__ . '/../web/themes/' . $this->data->theme . '/js/*.js';
 
-        $this->js = file_get_contents($fi);
-
-        if ($this->js === false) {
-            exit("
-                <html>
-                <body>
-                <h1>500</h1>
-                <p>Missing Javascript</p>
-                <ul>
-                    <li>Site {$this->site}</li><li>Page {$this->page}</li><li>Arg1 {$this->arg1}</li><li>Arg2 {$this->arg2}</li><li>Arg3 {$this->arg3}</li>
-                </ul>
-                <pre>{$this->json}</pre>
-                </body>
-                </html>
-           
-            ");
+        foreach (glob($dir) as $filename) {
+            $this->js[] = explode('/../web', $filename)[1];
         }
-        // get any additional js files in here
-        // foreach blah blah make include files
+
+        if (empty($this->js)) {
+
+            $this->abort(500, "Missing Javascript");
+
+        }
+
+        // The theme header and footer must include all tags necessary to enclose the body including start and end body tags
 
         $header_file = __DIR__ . '/../web/themes/' . $this->data->theme . '/html/header.php';
+        ob_start();
+        //$return =
+            include $header_file; // Can return a value with return()
+        $this->output .= ob_get_clean();
+
+        $this->output .= $this->cssFiles();
+
+        $this->output .= $this->html;
+
+        $this->output .= $this->jsFiles();
+
         $footer_file = __DIR__ . '/../web/themes/' . $this->data->theme . '/html/footer.php';
+        ob_start();
+        //$return =
+        include $footer_file; // Can return a value with return()
+        $this->output .= ob_get_clean();
 
-        // see https://stackoverflow.com/questions/851367/how-to-execute-and-get-content-of-a-php-file-in-a-variable
+        return true;
 
-        // So, assemble $this->output by executing header, footer
+    }
 
-        // then add header + include files + js + css + body + footer and put it into output
+    public function cssFiles() {
 
-        // then output the output
+        $output = '';
 
+        foreach ($this->css as $file) {
 
+            $output .= "<link media=\"all\" rel=\"stylesheet\" href=\"$file\" />\n";
+
+        }
+        return $output;
+    }
+
+    public function jsFiles() {
+
+        $output = '';
+
+        foreach ($this->js as $file) {
+
+            $output .= "<script defer=\"defer\"  type=\"application/javascript\" src=\"$file\" /></script>\n";
+
+        }
+        return $output;
     }
 
     public function page() {
