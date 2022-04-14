@@ -50,12 +50,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/olsonhost/phat.git",
-                "reference": "13e71e54354819371914893f8946867226e81de2"
+                "reference": "c8cbc460da518e7c8ab3964522ea8535a76420d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/olsonhost/phat/zipball/13e71e54354819371914893f8946867226e81de2",
-                "reference": "13e71e54354819371914893f8946867226e81de2",
+                "url": "https://api.github.com/repos/olsonhost/phat/zipball/c8cbc460da518e7c8ab3964522ea8535a76420d0",
+                "reference": "c8cbc460da518e7c8ab3964522ea8535a76420d0",
                 "shasum": ""
             },
             "default-branch": true,
@@ -80,7 +80,7 @@
                 "issues": "https://github.com/olsonhost/phat/issues",
                 "source": "https://github.com/olsonhost/phat/tree/main"
             },
-            "time": "2022-04-14T14:43:37+00:00"
+            "time": "2022-04-14T15:35:33+00:00"
         }
     ],
     "packages-dev": [

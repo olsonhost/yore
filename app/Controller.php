@@ -6,9 +6,7 @@ class Controller extends Library {
 
     public $data, $json;
 
-    public $header, $footer, $html, $js, $css, $output;
-
-    public $assets; // array of css and js links to be included in output
+    public $header, $footer, $html, $js = [], $css = [], $output;
 
     public function __construct() {
 
@@ -38,31 +36,18 @@ class Controller extends Library {
 
         // In the helper class or parent thing, make methods to doing this repetetive task
 
-        $fi = __DIR__ . '/../web/themes/' . $this->data->theme . '/css/theme.css';  // Why not make this Php ?
+        $cssDir = __DIR__ . '/../web/themes/' . $this->data->theme . '/css/*.css';
 
-        //exit($fi);
+        foreach (glob($cssDir) as $filename) {
+            echo "$filename size " . filesize($filename) . "\n";
+        }
 
-        $this->css = file_get_contents($fi);
+        exit;
 
-       // var_dump($this->css); exit;
+        if (empty($this->css)) {
 
-        if ($this->css === false) {
+            $this->abort();
 
-            // Make this a template or something
-
-            exit("
-                <html>
-                <body>
-                <h1>500</h1>
-                <p>Missing CSS</p>
-                <ul>
-                    <li>Site {$this->site}</li><li>Page {$this->page}</li><li>Arg1 {$this->arg1}</li><li>Arg2 {$this->arg2}</li><li>Arg3 {$this->arg3}</li>
-                </ul>
-                <pre>{$this->json}</pre>
-                </body>
-                </html>
-           
-            ");
         }
         // get any additional css files in here
         // foreach blah blah make include files
