@@ -30,8 +30,8 @@ class Library
             )
         );
 
-        $this->site = $this->params[0] ?? 'default';
-        $this->page = $this->params[1] ?? 'home';
+        $this->site = !empty($this->params[0] ?? null) ? $this->params[0] : 'default';
+        $this->page = !empty($this->params[1] ?? null) ? $this->params[1] : 'home';
         $this->arg1 = $this->params[2] ?? false;
         $this->arg2 = $this->params[3] ?? false;
         $this->arg3 = $this->params[4] ?? false;

@@ -167,6 +167,14 @@ class Controller extends Library {
 
     }
 
+     ######   ######   ######  ######## #### ##       ########  ######
+    ##    ## ##    ## ##    ## ##        ##  ##       ##       ##    ##
+    ##       ##       ##       ##        ##  ##       ##       ##
+    ##        ######   ######  ######    ##  ##       ######    ######
+    ##             ##       ## ##        ##  ##       ##             ##
+    ##    ## ##    ## ##    ## ##        ##  ##       ##       ##    ##
+     ######   ######   ######  ##       #### ######## ########  ######
+
     public function cssFiles() {
 
         $output = '';
@@ -178,6 +186,14 @@ class Controller extends Library {
         }
         return $output;
     }
+
+          ##  ######  ######## #### ##       ########  ######
+          ## ##    ## ##        ##  ##       ##       ##    ##
+          ## ##       ##        ##  ##       ##       ##
+          ##  ######  ######    ##  ##       ######    ######
+    ##    ##       ## ##        ##  ##       ##             ##
+    ##    ## ##    ## ##        ##  ##       ##       ##    ##
+     ######   ######  ##       #### ######## ########  ######
 
     public function jsFiles() {
 
@@ -191,9 +207,17 @@ class Controller extends Library {
         return $output;
     }
 
+    ########     ###     ######   ########
+    ##     ##   ## ##   ##    ##  ##
+    ##     ##  ##   ##  ##        ##
+    ########  ##     ## ##   #### ######
+    ##        ######### ##    ##  ##
+    ##        ##     ## ##    ##  ##
+    ##        ##     ##  ######   ########
+
     public function page() {
 
-        $this->json = $this->getData();
+        $this->json = $this->json();
 
         $this->data = json_decode($this->json);
 
@@ -201,7 +225,17 @@ class Controller extends Library {
 
     }
 
-    public function getData() {
+
+          ##  ######   #######  ##    ##
+          ## ##    ## ##     ## ###   ##
+          ## ##       ##     ## ####  ##
+          ##  ######  ##     ## ## ## ##
+    ##    ##       ## ##     ## ##  ####
+    ##    ## ##    ## ##     ## ##   ###
+     ######   ######   #######  ##    ##
+
+
+    public function json() {
 
         # If the page exists, return the json data for the page
 
@@ -211,33 +245,12 @@ class Controller extends Library {
 
         if (!$page) {
 
-
-            // get pages/default/home.json
-            // update the json to populate the site and page being asked for and return it
-            // (so that it may be edited and saved by the user)
-            // (or edited but not saved by a guest)
-            // (guests can edit new and existing pages but only users can save them)
-
-
-            exit("
-                <html>
-                <body>
-                <h1>404</h1>
-                <p>Page not found</p>
-                <ul>
-                    <li>Site {$this->site}</li><li>Page {$this->page}</li><li>Arg1 {$this->arg1}</li><li>Arg2 {$this->arg2}</li><li>Arg3 {$this->arg3}</li>
-                </ul>
-                </body>
-                </html>
-            
-            ");
+            $this->abort(404,'Page Not Found');
 
         } else {
 
             return($page);
 
         }
-
     }
-
 }
