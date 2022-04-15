@@ -1,5 +1,13 @@
 <?php
 
+##       #### ########  ########     ###    ########  ##    ##
+##        ##  ##     ## ##     ##   ## ##   ##     ##  ##  ##
+##        ##  ##     ## ##     ##  ##   ##  ##     ##   ####
+##        ##  ########  ########  ##     ## ########     ##
+##        ##  ##     ## ##   ##   ######### ##   ##      ##
+##        ##  ##     ## ##    ##  ##     ## ##    ##     ##
+######## #### ########  ##     ## ##     ## ##     ##    ##
+
 namespace App;
 
 use Olsonhost\Phat\Phat;
@@ -22,12 +30,22 @@ class Library
             )
         );
 
-        $this->site = $this->params[0] ?? 'home';
+        $this->site = $this->params[0] ?? 'default';
         $this->page = $this->params[1] ?? 'home';
         $this->arg1 = $this->params[2] ?? false;
         $this->arg2 = $this->params[3] ?? false;
         $this->arg3 = $this->params[4] ?? false;
     }
+
+
+    ##     ## #### ######## ##      ##
+    ##     ##  ##  ##       ##  ##  ##
+    ##     ##  ##  ##       ##  ##  ##
+    ##     ##  ##  ######   ##  ##  ##
+     ##   ##   ##  ##       ##  ##  ##
+      ## ##    ##  ##       ##  ##  ##
+       ###    #### ########  ###  ###
+
 
     public function view($output, $data = []) {
 
@@ -37,6 +55,14 @@ class Library
         return $phat->view($output, $data);
 
     }
+
+       ###    ########   #######  ########  ########
+      ## ##   ##     ## ##     ## ##     ##    ##
+     ##   ##  ##     ## ##     ## ##     ##    ##
+    ##     ## ########  ##     ## ########     ##
+    ######### ##     ## ##     ## ##   ##      ##
+    ##     ## ##     ## ##     ## ##    ##     ##
+    ##     ## ########   #######  ##     ##    ##
 
     public function abort($code=500, $message='An error has occurred', $details = 'No details') {
 

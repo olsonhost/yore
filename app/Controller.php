@@ -1,5 +1,13 @@
 <?php
 
+ ######   #######  ##    ## ######## ########   #######  ##       ##       ######## ########
+##    ## ##     ## ###   ##    ##    ##     ## ##     ## ##       ##       ##       ##     ##
+##       ##     ## ####  ##    ##    ##     ## ##     ## ##       ##       ##       ##     ##
+##       ##     ## ## ## ##    ##    ########  ##     ## ##       ##       ######   ########
+##       ##     ## ##  ####    ##    ##   ##   ##     ## ##       ##       ##       ##   ##
+##    ## ##     ## ##   ###    ##    ##    ##  ##     ## ##       ##       ##       ##    ##
+ ######   #######  ##    ##    ##    ##     ##  #######  ######## ######## ######## ##     ##
+
 namespace App;
 
 class Controller extends Library {
@@ -26,11 +34,29 @@ class Controller extends Library {
 
     }
 
+
+    ########  ########   #######   ######  ########  ######   ######
+    ##     ## ##     ## ##     ## ##    ## ##       ##    ## ##    ##
+    ##     ## ##     ## ##     ## ##       ##       ##       ##
+    ########  ########  ##     ## ##       ######    ######   ######
+    ##        ##   ##   ##     ## ##       ##             ##       ##
+    ##        ##    ##  ##     ## ##    ## ##       ##    ## ##    ##
+    ##        ##     ##  #######   ######  ########  ######   ######
+
+
     public function process() {
 
         $this->html = $this->data->body;
 
     }
+
+       ###     ######   ######  ######## ##     ## ########  ##       ########
+      ## ##   ##    ## ##    ## ##       ###   ### ##     ## ##       ##
+     ##   ##  ##       ##       ##       #### #### ##     ## ##       ##
+    ##     ##  ######   ######  ######   ## ### ## ########  ##       ######
+    #########       ##       ## ##       ##     ## ##     ## ##       ##
+    ##     ## ##    ## ##    ## ##       ##     ## ##     ## ##       ##
+    ##     ##  ######   ######  ######## ##     ## ########  ######## ########
 
     public function assemble() {
 
@@ -58,7 +84,15 @@ class Controller extends Library {
 
         }
 
-        // The theme header and footer must include all tags necessary to enclose the body including start and end body tags
+
+        ##     ## ########    ###    ########  ######## ########
+        ##     ## ##         ## ##   ##     ## ##       ##     ##
+        ##     ## ##        ##   ##  ##     ## ##       ##     ##
+        ######### ######   ##     ## ##     ## ######   ########
+        ##     ## ##       ######### ##     ## ##       ##   ##
+        ##     ## ##       ##     ## ##     ## ##       ##    ##
+        ##     ## ######## ##     ## ########  ######## ##     ##
+
 
         $header_file = __DIR__ . '/../web/themes/' . $this->data->theme . '/html/header.php';
         ob_start();
@@ -66,13 +100,34 @@ class Controller extends Library {
             include $header_file; // Can return a value with return()
         $this->output .= ob_get_clean();
 
+         ######   ######   ######
+        ##    ## ##    ## ##    ##
+        ##       ##       ##
+        ##        ######   ######
+        ##             ##       ##
+        ##    ## ##    ## ##    ##
+         ######   ######   ######
+
+        $this->output .= $this->cssFiles();
+
+
+        ##    ##    ###    ##     ## ########     ###    ########
+        ###   ##   ## ##   ##     ## ##     ##   ## ##   ##     ##
+        ####  ##  ##   ##  ##     ## ##     ##  ##   ##  ##     ##
+        ## ## ## ##     ## ##     ## ########  ##     ## ########
+        ##  #### #########  ##   ##  ##     ## ######### ##   ##
+        ##   ### ##     ##   ## ##   ##     ## ##     ## ##    ##
+        ##    ## ##     ##    ###    ########  ##     ## ##     ##
+
         $navbar_file = __DIR__ . '/../web/themes/' . $this->data->theme . '/html/navbar.php';
         ob_start();
         //$return =
         include $navbar_file; // Can return a value with return()
         $this->output .= ob_get_clean();
 
-        $this->output .= $this->cssFiles();
+        // Use the following body (<main></main>) container from a body template in the theme. Use this as well as the
+        // NavBar, Header and Footer templates in conjunction with elements from the page.json which will then be
+        // configurable using the page editor tool (Todo, this will be a replaceable vendor package as well)
 
         $this->output .= "
         <main role=\"main\" class=\"container\">
@@ -83,7 +138,24 @@ class Controller extends Library {
         </main>
         ";
 
+              ##    ###    ##     ##    ###     ######   ######  ########  #### ########  ########
+              ##   ## ##   ##     ##   ## ##   ##    ## ##    ## ##     ##  ##  ##     ##    ##
+              ##  ##   ##  ##     ##  ##   ##  ##       ##       ##     ##  ##  ##     ##    ##
+              ## ##     ## ##     ## ##     ##  ######  ##       ########   ##  ########     ##
+        ##    ## #########  ##   ##  #########       ## ##       ##   ##    ##  ##           ##
+        ##    ## ##     ##   ## ##   ##     ## ##    ## ##    ## ##    ##   ##  ##           ##
+         ######  ##     ##    ###    ##     ##  ######   ######  ##     ## #### ##           ##
+
         $this->output .= $this->jsFiles();
+
+        ########  #######   #######  ######## ######## ########
+        ##       ##     ## ##     ##    ##    ##       ##     ##
+        ##       ##     ## ##     ##    ##    ##       ##     ##
+        ######   ##     ## ##     ##    ##    ######   ########
+        ##       ##     ## ##     ##    ##    ##       ##   ##
+        ##       ##     ## ##     ##    ##    ##       ##    ##
+        ##        #######   #######     ##    ######## ##     ##
+
 
         $footer_file = __DIR__ . '/../web/themes/' . $this->data->theme . '/html/footer.php';
         ob_start();
