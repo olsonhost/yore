@@ -15,7 +15,7 @@ use Olsonhost\Phat\Phat;
 class Library
 {
 
-    public $params, $site, $page, $arg1, $arg2, $arg3;
+    public $params, $site, $page, $arg1, $arg2, $arg3, $debug = true;
 
     public function init() {
         $this->params = explode('/',
@@ -52,7 +52,28 @@ class Library
         // Render the output using the Phat viewer
         $phat = new Phat;
 
-        return $phat->view($output, $data);
+        $output = $phat->view($output, $data);
+
+        if ($this->debug) {
+            $str_data = json_encode($data, JSON_PRETTY_PRINT);
+            $uri = $_SERVER['REQUEST_URI'];
+            $debug = // make this a template
+                "
+                <textarea style='width:100%; height:300px;'>
+                Site: {$this->site}   Page: {$this->page}   Arg1: {$this->arg1}   Arg2: {$this->arg2}   Arg3: {$this->arg3}
+                
+                URI: $uri
+                
+                Data: $str_data
+                </textarea>
+                
+                ";
+
+
+            $output .= $debug;
+        }
+
+        return $output;
 
     }
 

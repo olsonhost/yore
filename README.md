@@ -4,7 +4,17 @@ https://yoreweb.com
 
 vhost
 
-```<IfModule mod_ssl.c>
+Be sure that the following lines are in your web host config
+
+```        RewriteEngine on
+        RewriteCond %{REQUEST_URI} !^/index.php$
+        RewriteRule ^(.+)$ /index.php?url=$1 [NC,L]
+```
+
+For example, for Apache your sites-available ssl config might look like this: 
+
+
+```
 <VirtualHost *:443>
 ServerName yoreweb.com
 <Directory /var/www/yore/web>
@@ -25,5 +35,5 @@ SSLCertificateFile /etc/letsencrypt/live/yoreweb.com/fullchain.pem
 SSLCertificateKeyFile /etc/letsencrypt/live/yoreweb.com/privkey.pem
 Include /etc/letsencrypt/options-ssl-apache.conf
 </VirtualHost>
-</IfModule>
+
 ```
