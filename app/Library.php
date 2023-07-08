@@ -15,7 +15,9 @@ use Olsonhost\Phat\Phat;
 class Library
 {
 
-    public $params, $site, $page, $arg1, $arg2, $arg3, $debug = true;
+    public $domain;
+
+    public $params, $site, $name, $arg1, $arg2, $arg3, $debug = true;
 
     public function init() {
         $this->params = explode('/',
@@ -30,8 +32,9 @@ class Library
             )
         );
 
+        $this->domain = $_SERVER['SERVER_NAME'];
         $this->site = !empty($this->params[0] ?? null) ? $this->params[0] : 'default';
-        $this->page = !empty($this->params[1] ?? null) ? $this->params[1] : 'home';
+        $this->name = !empty($this->params[1] ?? null) ? $this->params[1] : 'home';
         $this->arg1 = $this->params[2] ?? false;
         $this->arg2 = $this->params[3] ?? false;
         $this->arg3 = $this->params[4] ?? false;
@@ -60,7 +63,7 @@ class Library
             $debug = // make this a template
                 "
                 <textarea style='width:100%; height:300px;'>
-                Site: {$this->site}   Page: {$this->page}   Arg1: {$this->arg1}   Arg2: {$this->arg2}   Arg3: {$this->arg3}
+                Site: {$this->site}   Page Name: {$this->name}   Arg1: {$this->arg1}   Arg2: {$this->arg2}   Arg3: {$this->arg3}
                 
                 URI: $uri
                 
@@ -97,7 +100,7 @@ class Library
                 <h1>$code</h1>
                 <p>$message</p>
                 <ul>
-                    <li>Site {$this->site}</li><li>Page {$this->page}</li><li>Arg1 {$this->arg1}</li><li>Arg2 {$this->arg2}</li><li>Arg3 {$this->arg3}</li>
+                    <li>Site {$this->site}</li><li>Page Name {$this->name}</li><li>Arg1 {$this->arg1}</li><li>Arg2 {$this->arg2}</li><li>Arg3 {$this->arg3}</li>
                 </ul>
                 <pre>$details</pre>
                 </body>

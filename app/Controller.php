@@ -12,9 +12,13 @@ namespace App;
 
 class Controller extends Library {
 
+    public $page;
+
     public $data, $json;
 
-    public $header, $footer, $html, $js = [], $css = [], $output, $page;
+    public $header, $footer, $html, $js = [], $css = [], $output;
+
+    // public vars in parent class $params, $site, $name, $arg1, $arg2, $arg3, $debug = true;
 
     public function __construct() {
 
@@ -47,6 +51,8 @@ class Controller extends Library {
     public function process() {
 
         $this->html = $this->data->body;
+
+        return true;
 
     }
 
@@ -241,7 +247,19 @@ class Controller extends Library {
 
         # otherwise return a blank template
 
-        $page = file_get_contents('../pages/' . $this->site . '/' . $this->page . '.json');
+        $default_page = '../pages/' . $this->site . '/' . $this->name . '.json';
+
+        $domain_page  = '../pages/_domains/' . $this->domain . '/' . $this->site . '/' . $this->name . '.json';
+
+        if (file_exists($domain_page)) {
+
+            $page = file_get_contents($domain_page);
+
+        } else {
+
+            $page = file_get_contents($default_page);
+
+        }
 
         if (!$page) {
 

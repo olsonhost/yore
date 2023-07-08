@@ -2,10 +2,10 @@
 
 # This is an example of a plain website that uses ECT
 
-# Or, for example, you could use ECT in a Wordpress Plugin
+# Or, for example, you could use ECT in a WordPress Plugin
 
 use App\Controller;
-use Olsonhost\Ect\Init;
+#use Olsonhost\Ect\Init;
 
 require '../vendor/autoload.php';
 
