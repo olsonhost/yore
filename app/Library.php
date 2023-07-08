@@ -61,8 +61,8 @@ class Library
             $str_data = json_encode($data, JSON_PRETTY_PRINT);
             $uri = $_SERVER['REQUEST_URI'];
             $debug = // make this a template
-                "
-                <textarea style='width:100%; height:300px;'>
+                "<button class='btn btn-danger btn-sm debug-info-button' onclick=\"$('.debug-info').toggle()\">Debug</button><br/>
+                <textarea class='debug-info' style='width:50%; min-width:350px; height:500px; display:none;'>
                 Site: {$this->site}   Page Name: {$this->name}   Arg1: {$this->arg1}   Arg2: {$this->arg2}   Arg3: {$this->arg3}
                 
                 URI: $uri

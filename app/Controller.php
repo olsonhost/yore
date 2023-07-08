@@ -24,11 +24,15 @@ class Controller extends Library {
 
         $this->init();
 
-        //var_dump([$this->site,$this->page,$this->arg1,$this->arg2,$this->arg3]);
+        // var_dump([$this->site,$this->page,$this->arg1,$this->arg2,$this->arg3]);
         // https://yoreweb.com/ho/ha/this/that/tother
         // array(5) { [0]=> string(2) "ho" [1]=> string(2) "ha" [2]=> string(4) "this" [3]=> string(4) "that" [4]=> string(6) "tother" }
 
         $ok = $this->page();
+
+        if ($ok != true) {
+            $this->abort(500, $ok);
+        }
 
         $ok = $this->process();
 
@@ -50,7 +54,28 @@ class Controller extends Library {
 
     public function process() {
 
-        $this->html = $this->data->body;
+        // no no no. Body is only rendered using @body or @data('body')
+        # $this->html = $this->data->body;
+
+        // default site is 'default'
+        // default view name is 'home'
+        // https://{domain}/{site=default}/{name=home}
+
+        $default_view = '../pages/' . $this->site . '/views/' . $this->data->view . '.phat.php';
+
+        $domain_view  = '../pages/_domains/' . $this->domain . '/' . $this->site . '/views/' . $this->data->view . '.phat.php';
+
+        if (file_exists($domain_view)) {
+
+            $this->html = file_get_contents($domain_view); // This is our whole tire content
+
+        } else {
+
+            $this->html = file_get_contents($default_view); // Just a template that displays @body()
+
+        }
+
+        // The html should be either data->view, data->views[] combined, or a default phat with @body()
 
         return true;
 
@@ -135,14 +160,16 @@ class Controller extends Library {
         // NavBar, Header and Footer templates in conjunction with elements from the page.json which will then be
         // configurable using the page editor tool (Todo, this will be a replaceable vendor package as well)
 
-        $this->output .= "
-        <main role=\"main\" class=\"container\">
-          <div class=\"starter-template\">
-            <h1>Bootstrap starter template</h1>
-            <p class=\"lead\">{$this->html}</p>
-          </div>
-        </main>
-        ";
+//        $this->output .= "
+//        <main role=\"main\" class=\"container\">
+//          <div class=\"starter-template\">
+//            <h1>Bootstrap starter template</h1>
+//            <p class=\"lead\">{$this->html}</p>
+//          </div>
+//        </main>
+//        ";
+
+        $this->output .= $this->html;
 
               ##    ###    ##     ##    ###     ######   ######  ########  #### ########  ########
               ##   ## ##   ##     ##   ## ##   ##    ## ##    ## ##     ##  ##  ##     ##    ##
@@ -227,8 +254,29 @@ class Controller extends Library {
 
         $this->data = json_decode($this->json);
 
-        return true;
-
+        switch (json_last_error()) {
+            case JSON_ERROR_NONE:
+                return true;
+                break;
+            case JSON_ERROR_DEPTH:
+                return 'Maximum stack depth exceeded';
+                break;
+            case JSON_ERROR_STATE_MISMATCH:
+                return 'Underflow or the modes mismatch';
+                break;
+            case JSON_ERROR_CTRL_CHAR:
+                return 'Unexpected control character found';
+                break;
+            case JSON_ERROR_SYNTAX:
+                return 'Syntax error, malformed JSON';
+                break;
+            case JSON_ERROR_UTF8:
+                return 'Malformed UTF-8 characters, possibly incorrectly encoded';
+                break;
+            default:
+                return 'Unknown JSON error';
+                break;
+        }
     }
 
 
@@ -246,6 +294,10 @@ class Controller extends Library {
         # If the page exists, return the json data for the page
 
         # otherwise return a blank template
+
+        // default site is 'default'
+        // default page name is 'home'
+        // https://{domain}/{site=default}/{page=home}
 
         $default_page = '../pages/' . $this->site . '/' . $this->name . '.json';
 

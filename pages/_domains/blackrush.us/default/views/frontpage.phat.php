@@ -1,7 +1,9 @@
-<h1><img src="nl.jpg"><span style="margin-left:-90px;">Blackrush Entertainment</span></h1>
+<!-- This is the frontpage view for blackrush domain. Views, by default, are site agnostic -->
+<h1><img src="@asset('images/nl.jpg')"><span style="margin-left:-90px;">Blackrush Entertainment</span></h1>
 <hr>
 <h3>Coming Soon</h3>
-
+<h4>@example()</h4>
+<p>@data('desc')</p>
 <table>
     <tr><th>Game Title</th><th>Status</th><th>About</th></tr>
     <tr><td>Night Land</td><td>(tbd)</td><td>Battle across the dark future Earth wasteland Based on the Horror Fantasy Fiction Book</td></tr>
@@ -17,8 +19,6 @@
     <tr><td>First on the Moon</td><td>(tbd)</td><td>Alternate timeline Cold-War astronauts must establish the American Moon Base while fighting off Soviet attacks based on the 1958 book by Jeff Sutton</td></tr>
     <tr><td>Forgotten Planet</td><td>(tbd)</td><td>In the distant future the descendants of shipwrecked survivors struggle to stay alive based on the 1954 book by Murray Leinster</td></tr>
 </table>
-
-
 
 <br/>
 <br/>
