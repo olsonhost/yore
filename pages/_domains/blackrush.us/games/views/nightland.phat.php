@@ -19,13 +19,13 @@
 
     <tr>
         <td colspan="2">
-            Description
+            The Sun has gone out and the Earth is lit only by the glow of residual vulcanism. The last few millions of the human race are gathered together in the Last Redoubt, a gigantic metal pyramid, nearly eight miles high, which is under siege from unknown forces and Powers outside in the dark. These are held back by a shield powered from a subterranean energy source called the Earth Current. For thousands of years vast living shapes known as the Watchers have waited in the darkness near the pyramid. It is thought that they are waiting for the inevitable time when the Circle's power finally weakens and dies. Other living things have been seen in the darkness, some of unknown origins, and others that may once have been human - the Abhuman -are several different abhorrent species of semi-intelligent beings evolved from humans who interbred with aliens or adapted to changed environmental conditions.
             <br>
             <br>
-            Description
+            To leave the protection of the Circle means almost certain death, or, worse, destruction of the soul, but you have established contact with an inhabitant of a forgotten Lesser Redoubt. First, one expedition sets off to rescue the inhabitants of the Lesser Redoubt, whose own Earth Current has been exhausted, only to meet with disaster. Now you set off alone into the darkness to find the girl he has made contact with, knowing that she is the reincarnation of a past love.
             <br>
             <br>
-            Description
+
         </td>
     </tr>
     <tr>
@@ -33,14 +33,18 @@
             Links
         </td>
         <td>
-            <a href="https://blackrushworld.blogspot.com/2023/07/worlds-city-at-worlds-end.html">
+            <a href="https://blackrushworld.blogspot.com/2023/07/the-night-land.html">
                 Game Development Blog
             </a>
             <br>
             Other Links
             <br/>
-            <a href="https://manybooks.net/book/132214/read#epubcfi(/6/2[titlepage]!/4/1:0))">
-                City at World's End - The complete book
+            <a href="https://www.youtube.com/watch?v=i4eNRcXbYpk">
+                The Night Land by William Hope Hodgson read by Mark Nelson | Full Audio Book
+            </a>
+            <br>
+            <a href="https://www.gutenberg.org/ebooks/10662">
+                The Night Land by William Hope Hodgson - Project Gutenburg
             </a>
 
         </td>

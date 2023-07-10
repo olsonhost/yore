@@ -33,14 +33,18 @@
             Links
         </td>
         <td>
-            <a href="https://blackrushworld.blogspot.com/2023/07/worlds-city-at-worlds-end.html">
+            <a href="https://blackrushworld.blogspot.com/2023/07/house-on-borderland.html">
                 Game Development Blog
             </a>
             <br>
             Other Links
             <br/>
-            <a href="https://manybooks.net/book/132214/read#epubcfi(/6/2[titlepage]!/4/1:0))">
-                City at World's End - The complete book
+            <a href="https://en.wikipedia.org/wiki/The_House_on_the_Borderland">
+                Wikipedia
+            </a>
+            <br/>
+            <a href="https://www.gutenberg.org/ebooks/10002">
+                The House on the Borderland by William Hope Hodgson - Project Gutenburg
             </a>
 
         </td>
