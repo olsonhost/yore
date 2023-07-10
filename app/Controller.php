@@ -1,4 +1,21 @@
 <?php
+/*
+
+ ▄▄▄▄    ██▓    ▄▄▄       ▄████▄   ██ ▄█▀ ██▀███   █    ██   ██████  ██░ ██
+▓█████▄ ▓██▒   ▒████▄    ▒██▀ ▀█   ██▄█▒ ▓██ ▒ ██▒ ██  ▓██▒▒██    ▒ ▓██░ ██▒
+▒██▒ ▄██▒██░   ▒██  ▀█▄  ▒▓█    ▄ ▓███▄░ ▓██ ░▄█ ▒▓██  ▒██░░ ▓██▄   ▒██▀▀██░
+▒██░█▀  ▒██░   ░██▄▄▄▄██ ▒▓▓▄ ▄██▒▓██ █▄ ▒██▀▀█▄  ▓▓█  ░██░  ▒   ██▒░▓█ ░██
+░▓█  ▀█▓░██████▒▓█   ▓██▒▒ ▓███▀ ░▒██▒ █▄░██▓ ▒██▒▒▒█████▓ ▒██████▒▒░▓█▒░██▓
+░▒▓███▀▒░ ▒░▓  ░▒▒   ▓▒█░░ ░▒ ▒  ░▒ ▒▒ ▓▒░ ▒▓ ░▒▓░░▒▓▒ ▒ ▒ ▒ ▒▓▒ ▒ ░ ▒ ░░▒░▒
+▒░▒   ░ ░ ░ ▒  ░ ▒   ▒▒ ░  ░  ▒   ░ ░▒ ▒░  ░▒ ░ ▒░░░▒░ ░ ░ ░ ░▒  ░ ░ ▒ ░▒░ ░
+ ░    ░   ░ ░    ░   ▒   ░        ░ ░░ ░   ░░   ░  ░░░ ░ ░ ░  ░  ░   ░  ░░ ░
+ ░          ░  ░     ░  ░░ ░      ░  ░      ░        ░           ░   ░  ░  ░
+      ░                  ░
+
+
+
+*/
+
 
  ######   #######  ##    ## ######## ########   #######  ##       ##       ######## ########
 ##    ## ##     ## ###   ##    ##    ##     ## ##     ## ##       ##       ##       ##     ##
@@ -9,6 +26,9 @@
  ######   #######  ##    ##    ##    ##     ##  #######  ######## ######## ######## ##     ##
 
 namespace App;
+
+use Michelf\Markdown;
+use Michelf\MarkdownExtra;
 
 class Controller extends Library {
 
@@ -65,17 +85,34 @@ class Controller extends Library {
 
         $domain_view  = '../pages/_domains/' . $this->domain . '/' . $this->site . '/views/' . $this->data->view . '.phat.php';
 
+        $view='';
+
         if (file_exists($domain_view)) {
 
-            $this->html = file_get_contents($domain_view); // This is our whole tire content
+            $this->html = file_get_contents($view=$domain_view); // This is our whole tire content
 
         } else {
 
-            $this->html = file_get_contents($default_view); // Just a template that displays @body()
+            $this->html = file_get_contents($view=$default_view); // Just a template that displays @body()
 
         }
 
         // The html should be either data->view, data->views[] combined, or a default phat with @body()
+
+        // If we want to keep Phat as separate project, send these vars to phat object rather than setting them here
+
+        // Not sure cuz we may want these (i.e. for the edit button) for header, footer, multiple views, nav bar, whtvr
+
+        $vars = get_defined_vars();
+
+        // the main reason for doing this right now is so Phat knows what #view is, to use in @edit(#view)
+        foreach ($vars as $var => $val) {
+            $this->html = str_replace('#' . $var, $val, $this->html);
+        }
+
+        if ($this->data->markdown ?? false) {
+            $this->html = MarkdownExtra::defaultTransform($this->html);
+        }
 
         return true;
 
@@ -91,6 +128,8 @@ class Controller extends Library {
 
     public function assemble() {
 
+        // include theme js and css (require it)
+
         $dir = __DIR__ . '/../web/themes/' . $this->data->theme . '/css/*.css';
 
         foreach (glob($dir) as $filename) {
@@ -99,7 +138,7 @@ class Controller extends Library {
 
         if (empty($this->css)) {
 
-            $this->abort(500, "Missing Stylesheet");
+            $this->abort(500, "Missing Theme Stylesheet");
 
         }
 
@@ -111,10 +150,23 @@ class Controller extends Library {
 
         if (empty($this->js)) {
 
-            $this->abort(500, "Missing Javascript");
+            $this->abort(500, "Missing Theme Javascript");
 
         }
 
+        // Include common js and css too
+
+        $dir = __DIR__ . '/../web/css/*.css';
+
+        foreach (glob($dir) as $filename) {
+            $this->css[] = explode('/../web', $filename)[1];
+        }
+
+        $dir = __DIR__ . '/../web/js/*.js';
+
+        foreach (glob($dir) as $filename) {
+            $this->js[] = explode('/../web', $filename)[1];
+        }
 
         ##     ## ########    ###    ########  ######## ########
         ##     ## ##         ## ##   ##     ## ##       ##     ##

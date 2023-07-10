@@ -10,5 +10,6 @@
   "views": [],
   "example_phat_var": "Yo ho ho",
   "security": false,
-  "public": true
+  "public": true,
+  "markdown": true
 }
