@@ -13,6 +13,9 @@
                 <a class="nav-link" href="/games">Games</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="https://github.com/olsonhost?tab=repositories" target="_blank">Code</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li>
             <li class="nav-item dropdown">
