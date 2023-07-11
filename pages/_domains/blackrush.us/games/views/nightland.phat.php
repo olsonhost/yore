@@ -34,7 +34,7 @@
         </td>
         <td>
             <a href="https://blackrushworld.blogspot.com/2023/07/the-night-land.html">
-                Game Development Blog
+                Game Development Journal
             </a>
             <br>
             Other Links
@@ -64,9 +64,9 @@
 @blackrush()
 </div>
 <div style="float:left">
-    <img style="width:196px;" src="@asset('images/ue-logo-stacked-unreal-engine.png')" />
+    <img style="width: 128px;" src="@asset('images/ue-logo-stacked-unreal-engine.png')" />
 </div>
 <div style="float:left">
-    <img style="width:164px;" src="@asset('images/epic-games-logo.png')" />
+    <img style="width: 96px;" src="@asset('images/epic-games-logo.png')" />
 </div>
 <div style="clear:both;"></div>

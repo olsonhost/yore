@@ -9,7 +9,7 @@
             <img src="@asset('images/bl1.jpg')" style="width:128px;height:128px;">
         </td>
         <td>
-            <h3>House on the Borderland</h3>
+            <h3>The House on the Borderland</h3>
 
             Survive a haunted mansion mystery based on the horror novel by William Hope Hodgeson
 
@@ -34,7 +34,7 @@
         </td>
         <td>
             <a href="https://blackrushworld.blogspot.com/2023/07/house-on-borderland.html">
-                Game Development Blog
+                Game Development Journal
             </a>
             <br>
             Other Links
@@ -64,9 +64,9 @@
 @blackrush()
 </div>
 <div style="float:left">
-    <img style="width:196px;" src="@asset('images/ue-logo-stacked-unreal-engine.png')" />
+    <img style="width: 128px;" src="@asset('images/ue-logo-stacked-unreal-engine.png')" />
 </div>
 <div style="float:left">
-    <img style="width:164px;" src="@asset('images/epic-games-logo.png')" />
+    <img style="width: 96px;" src="@asset('images/epic-games-logo.png')" />
 </div>
 <div style="clear:both;"></div>
