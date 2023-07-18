@@ -7,7 +7,7 @@ download on <a href="https://github.com/olsonhost" target="_blank">GitHub</a>
 
 
 
-<img src="@asset('images/nl6.jpg')" style="max-width: 100%;">
+<img src="@asset('images/art/nightland/nl4.jpg')" style="max-width: 100%;">
 <br>
 Blackrush Entertainment is a publisher of open world video games based on early 20th century science fiction and horror
 <br>

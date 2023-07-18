@@ -5,7 +5,7 @@
   "title": "Blackrush Entertainment",
   "theme": "blackrush",
   "desc": "This is the BLACKRUSH docs site home page",
-  "body": "This is the body of the 'blackrush' domain, 'docs' site, 'home' page",
+  "body": "This is the body of the 'blackrush' domain, 'api' site, 'home' json",
   "view": "home",
   "views": [],
   "example_phat_var": "Yo ho ho",

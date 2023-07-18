@@ -57,7 +57,7 @@
 
             An interplanetary treasure hunt with evil villains and things you can hack
             <br>
-            <a href="/games/andromeda">Visit Game Page</a>
+            <a style="color:grey;" xhref="/games/andromeda">Visit Game Page</a>
 
         </td>
     </tr>

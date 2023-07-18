@@ -44,21 +44,51 @@ class Controller extends Library {
 
         $this->init();
 
-        // var_dump([$this->site,$this->page,$this->arg1,$this->arg2,$this->arg3]);
-        // https://yoreweb.com/ho/ha/this/that/tother
-        // array(5) { [0]=> string(2) "ho" [1]=> string(2) "ha" [2]=> string(4) "this" [3]=> string(4) "that" [4]=> string(6) "tother" }
+        if ($this->site == 'api') {
 
-        $ok = $this->page();
+            //var_dump($this); exit;
 
-        if ($ok != true) {
-            $this->abort(500, $ok);
+            /*
+             * object(App\Controller)#2 (17) {
+             * ["page"]=> NULL
+             * ["data"]=> NULL
+             * ["json"]=> NULL
+             * ["header"]=> NULL
+             * ["footer"]=> NULL
+             * ["html"]=> NULL
+             * ["js"]=> array(0) { }
+             * ["css"]=> array(0) { }
+             * ["output"]=> NULL
+             * ["domain"]=> string(12) "blackrush.us"
+             * ["params"]=> array(1) { [0]=> string(3) "api" }
+             * ["site"]=> string(3) "api"
+             * ["name"]=> string(4) "home"
+             * ["arg1"]=> bool(false)
+             * ["arg2"]=> bool(false)
+             * ["arg3"]=> bool(false)
+             * ["debug"]=> bool(true) }
+             */
+            $this->api_process();
+
+        } else {
+
+            // var_dump([$this->site,$this->page,$this->arg1,$this->arg2,$this->arg3]);
+            // https://yoreweb.com/ho/ha/this/that/tother
+            // array(5) { [0]=> string(2) "ho" [1]=> string(2) "ha" [2]=> string(4) "this" [3]=> string(4) "that" [4]=> string(6) "tother" }
+
+            // Get and decode the json for this page (from disk or perhaps a data source)
+            $ok = $this->page();
+
+            if ($ok != true) {
+                $this->abort(500, $ok);
+            }
+
+            $ok = $this->process();
+
+            $ok = $this->assemble();
+
+            $this->page = $this->view($this->output, $this->data);
         }
-
-        $ok = $this->process();
-
-        $ok = $this->assemble();
-
-        $this->page = $this->view($this->output, $this->data);
 
     }
 
@@ -71,6 +101,15 @@ class Controller extends Library {
     ##        ##    ##  ##     ## ##    ## ##       ##    ## ##    ##
     ##        ##     ##  #######   ######  ########  ######   ######
 
+    public function api_process() {
+        $default_view = '../pages/' . $this->site . '/includes/' . $this->name . '.php';
+        $domain_view  = '../pages/_domains/' . $this->domain . '/' . $this->site . '/includes/' . $this->name . '.php';
+        if (file_exists($domain_view)) {
+            include $domain_view;
+        } else {
+            include $default_view;
+        }
+    }
 
     public function process() {
 

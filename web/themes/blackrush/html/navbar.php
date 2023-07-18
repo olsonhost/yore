@@ -30,10 +30,13 @@
             </li>
         </ul>
         <h4>
-            <i class="bi bi-twitch theme-navbar-color"></i>
-            <i class="bi bi-slack theme-navbar-color"></i>
-            <i class="bi bi-github theme-navbar-color"></i>
-            <i class="bi bi-discord theme-navbar-color"></i>
+            <a href=https://www.twitch.tv/olsonhost"><i class="bi bi-twitch theme-navbar-color"></i></a>
+            &nbsp;
+            <a href="https://join.slack.com/t/blackrushworkspace/shared_invite/zt-1yx3frggj-WP1on~N4wubHc2gQfQudLQ"><i class="bi bi-slack theme-navbar-color"></i></a>
+            &nbsp;
+            <a href="https://github.com/olsonhost"><i class="bi bi-github theme-navbar-color"></i></a>
+            &nbsp;
+            <a href="https://discord.gg/EcEWvnyp"><i class="bi bi-discord theme-navbar-color"></i></a>
 
 
         </h4>
