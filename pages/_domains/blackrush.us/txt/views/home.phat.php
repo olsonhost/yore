@@ -1,9 +1,10 @@
 <script>
     $(function() {
-        $('#east').on('click', function() {
+        $('#east, #west, #north, #south').on('click', function() {
             var rel = $(this).attr('rel');
             go(rel);
-        })
+        });
+
     });
 
     function go(where = 0) {
