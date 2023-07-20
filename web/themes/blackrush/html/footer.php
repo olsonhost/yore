@@ -1,7 +1,2 @@
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script>window.jQuery || document.write('<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
-<script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/htmx.org@1.9.3"></script>
 </body>
 </html>

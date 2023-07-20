@@ -34,7 +34,7 @@ class Library
 
     public $domain;
 
-    public $params, $site, $name, $arg1, $arg2, $arg3, $debug = true;
+    public $params, $site, $name, $arg1, $arg2, $arg3, $debug = false;
 
     public function init() {
         $this->params = explode('/',
