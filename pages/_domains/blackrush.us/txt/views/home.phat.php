@@ -1,4 +1,23 @@
 <script>
+
+    /*
+
+    Todo:
+        Save the user's location
+        Register the user (email address)
+        Add Actions and Outcomes
+
+        Inventory system
+        Map
+
+        Scene editor - a form to edit scenes, mode to click "na" buttons to create new locations, action options
+
+        Sound? Narration? (auto or manual)
+
+        A visited_desc text for when you were already in a scene in the same frame
+
+     */
+
     $(function() {
         $('#east, #west, #north, #south').on('click', function() {
             var rel = $(this).attr('rel');
